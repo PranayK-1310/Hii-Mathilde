@@ -1,0 +1,300 @@
+/* ============================================================
+   COLORS & THEME
+   Change these values to restyle the whole site.
+   ============================================================ */
+:root {
+  --cream:        #FFF6EC;
+  --peach:        #F6B98D;
+  --coral:        #EF9A8A;
+  --sage:         #9DBB9B;
+  --plum:         #6E5B6E;
+  --ink:          #3B3038;
+  --paper:        #FFFFFF;
+  --shadow-soft:  rgba(110, 91, 110, 0.14);
+
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body:    'Nunito', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+.name-highlight {
+  color: var(--coral);
+}
+
+/* ============================================================
+   SCREEN SWITCHING
+   Each <section class="screen"> is a full-height "page".
+   Only the one with .active is visible.
+   ============================================================ */
+.screen {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px 56px;
+}
+
+.screen.active {
+  display: flex;
+  animation: fadeIn 0.6s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 34px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--coral);
+  color: var(--paper);
+  box-shadow: 0 8px 20px var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px var(--shadow-soft);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SCREEN 1 — HERO
+   ============================================================ */
+.hero-inner {
+  max-width: 480px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.character { width: min(280px, 62vw); }
+.char-svg { width: 100%; height: auto; overflow: visible; }
+
+.char-body   { fill: var(--peach); }
+.char-cheek  { fill: var(--coral); opacity: 0.55; }
+.char-eye    { fill: var(--ink); }
+.char-smile  { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; }
+.char-arm-left,
+.char-arm-right,
+.char-arm-point { fill: none; stroke: var(--peach); stroke-width: 16; stroke-linecap: round; }
+.char-shadow { fill: var(--shadow-soft); }
+
+/* waving right arm: pivot near the shoulder */
+.char-arm-right-group {
+  transform-origin: 222px 175px;
+  animation: wave 1.6s ease-in-out infinite;
+}
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-18deg); }
+  50%      { transform: rotate(4deg); }
+  75%      { transform: rotate(-14deg); }
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
+  font-weight: 600;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--plum);
+  margin: 0;
+}
+
+/* ============================================================
+   SCREEN 2 — PLAN / ACTIVITIES / CALENDAR
+   ============================================================ */
+.plan-inner {
+  max-width: 720px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.plan-heading {
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+}
+
+.plan-sub {
+  color: var(--plum);
+  margin: -10px 0 0;
+  font-size: 0.98rem;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+@media (max-width: 620px) {
+  .activity-grid { grid-template-columns: 1fr; }
+}
+
+.activity-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 4px;
+  background: var(--paper);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  padding: 16px 16px 16px 44px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--shadow-soft);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.activity-card:hover { transform: translateY(-2px); }
+
+.activity-card input {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--coral);
+  cursor: pointer;
+}
+
+.activity-card:has(input:checked) {
+  border-color: var(--coral);
+  background: #FFF1E9;
+}
+
+.activity-emoji { font-size: 1.4rem; }
+.activity-name  { font-family: var(--font-display); font-weight: 600; font-size: 1rem; }
+.activity-desc  { color: var(--plum); font-size: 0.86rem; line-height: 1.3; }
+
+.date-block, .note-block {
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.date-label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--plum);
+}
+
+#chosen-date, #note {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid #EFE2D3;
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+}
+
+#chosen-date:focus, #note:focus {
+  outline: none;
+  border-color: var(--coral);
+}
+
+.form-hint {
+  font-size: 0.82rem;
+  color: var(--plum);
+  margin: -8px 0 0;
+}
+
+/* ============================================================
+   SCREEN 3 — THANK YOU
+   ============================================================ */
+.thanks-inner {
+  max-width: 480px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.char-eye-wink {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.char-smile-big { stroke-width: 5.5; }
+
+.char-arm-point-group {
+  transform-origin: 222px 170px;
+  animation: pointPulse 1.8s ease-in-out infinite;
+}
+@keyframes pointPulse {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(6px); }
+}
+
+.char-point-tip { fill: var(--peach); }
+
+.thanks-title {
+  font-size: clamp(2rem, 7vw, 2.8rem);
+}
+
+.thanks-sub {
+  color: var(--plum);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .char-arm-right-group,
+  .char-arm-point-group,
+  .screen.active { animation: none; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 2px;
+}

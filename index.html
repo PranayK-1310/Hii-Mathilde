@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi Mathilde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS SITE (no coding experience needed)
+  ============================================================
+  1. To change the activities: scroll down to the "ACTIVITY LIST"
+     section below. Each <label class="activity-card"> block is
+     one option. Copy/paste a block to add one, delete a block
+     to remove one, or just change the text inside.
+
+  2. To change colors: open style.css and edit the values at the
+     very top under ":root".
+
+  3. To change where the message gets sent: open script.js and
+     edit the RECIPIENT_EMAIL constant near the top.
+
+  4. To change the allowed date range: search for "MIN_DATE" and
+     "MAX_DATE" in this file (the <input type="date"> below).
+  ============================================================
+-->
+
+<!-- ================= SCREEN 1: HERO / HI MATHILDE ================= -->
+<section id="screen-hero" class="screen active">
+  <div class="hero-inner">
+    <div class="character" aria-hidden="true">
+      <svg viewBox="0 0 300 300" class="char-svg">
+        <!-- body -->
+        <ellipse class="char-shadow" cx="150" cy="268" rx="70" ry="12"/>
+        <circle class="char-body" cx="150" cy="160" r="95"/>
+        <!-- cheeks -->
+        <circle class="char-cheek" cx="103" cy="175" r="14"/>
+        <circle class="char-cheek" cx="197" cy="175" r="14"/>
+        <!-- eyes -->
+        <ellipse class="char-eye" cx="122" cy="150" rx="7" ry="10"/>
+        <ellipse class="char-eye" cx="178" cy="150" rx="7" ry="10"/>
+        <!-- smile -->
+        <path class="char-smile" d="M 122 185 Q 150 208 178 185" />
+        <!-- left arm (static) -->
+        <path class="char-arm-left" d="M 78 175 Q 40 190 35 225" />
+        <!-- right arm (waving) -->
+        <g class="char-arm-right-group">
+          <path class="char-arm-right" d="M 222 175 Q 255 150 258 108" />
+        </g>
+      </svg>
+    </div>
+    <h1 class="hero-title">Hi <span class="name-highlight">Mathilde</span></h1>
+    <p class="hero-sub">I made you a little something. Got a minute?</p>
+    <button id="btn-to-activities" class="btn btn-primary">Take a look</button>
+  </div>
+</section>
+
+<!-- ================= SCREEN 2: ACTIVITIES + CALENDAR ================= -->
+<section id="screen-plan" class="screen">
+  <div class="plan-inner">
+    <h2 class="plan-heading">Choose the activities</h2>
+    <p class="plan-sub">pick as many as you like 😄</p>
+
+    <!-- ============ ACTIVITY LIST (edit freely) ============ -->
+    <div class="activity-grid" id="activity-grid">
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="High Park Hangout">
+        <span class="activity-emoji">🍁</span>
+        <span class="activity-name">High Park Hangout</span>
+        <span class="activity-desc">A hot chocolate and croissant after?</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="Kensington Market Coffee Crawl">
+        <span class="activity-emoji">☕</span>
+        <span class="activity-name">Kensington Market Coffee Crawl</span>
+        <span class="activity-desc">We'll choose 2 coffes we never had before and order for each other</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="Distillery District Stroll">
+        <span class="activity-emoji">🧱</span>
+        <span class="activity-name">Distillery District Stroll</span>
+        <span class="activity-desc">Just chill in Distillery District and a Coffee? </span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="St. Lawrence Market Food Tour">
+        <span class="activity-emoji">🥐</span>
+        <span class="activity-name">St. Lawrence Market Food Tour</span>
+        <span class="activity-desc">We just point at things and try them LOL Yess..</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="Art Gallery of Ontario Afternoon">
+        <span class="activity-emoji">🎨</span>
+        <span class="activity-name">Art Gallery of Ontario Afternoon</span>
+        <span class="activity-desc">pick our favourite piece each and play a fun act around it</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="Toronto Island Bike Ride">
+        <span class="activity-emoji">🚲</span>
+        <span class="activity-name">Toronto Island Bike Ride</span>
+        <span class="activity-desc">Short ferry over, ride around, skyline views and a drink after?</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="CN Tower Skyline Walk">
+        <span class="activity-emoji">🌆</span>
+        <span class="activity-name">CN Tower Skyline Walk</span>
+        <span class="activity-desc">Waterfront walk, watch the city light up</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="Ripley's Aquarium Visit">
+        <span class="activity-emoji">🐠</span>
+        <span class="activity-name">Ripley's Aquarium Visit</span>
+        <span class="activity-desc">Sharks, jellyfish, low-key fun either way</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="The K Karaoke">
+        <span class="activity-emoji">🎤</span>
+        <span class="activity-name">The Karaoke</span>
+        <span class="activity-desc">We'll go this Kareoke Place, sing some songs, have fun and coffee/eat out after..</span>
+      </label>
+
+      <label class="activity-card">
+        <input type="checkbox" name="activity" value="Thrift shopping + Bubble Tea Hop">
+        <span class="activity-emoji">🏬</span>
+        <span class="activity-name">Thrift Shopping + Cafe Hunt ?</span>
+        <span class="activity-desc">Pick things for each other in 15 minutes from the thrift store and then Cafe Hunt?</span>
+      </label>
+
+    </div>
+    <!-- ============ END ACTIVITY LIST ============ -->
+
+    <div class="date-block">
+      <label for="chosen-date" class="date-label">Pick a day that works</label>
+      <input type="date" id="chosen-date" name="chosen-date" min="2026-10-01" max="2026-10-31">
+    </div>
+
+    <div class="note-block">
+      <label for="note" class="date-label">Anything to add? (optional)</label>
+      <textarea id="note" name="note" rows="3" placeholder="Say whatever you want here..."></textarea>
+    </div>
+
+    <button id="btn-submit" class="btn btn-primary">Send it over</button>
+    <p class="form-hint">This opens your email app with everything filled in; just hit send.</p>
+  </div>
+</section>
+
+<!-- ================= SCREEN 3: THANK YOU ================= -->
+<section id="screen-thanks" class="screen">
+  <div class="thanks-inner">
+    <div class="character" aria-hidden="true">
+      <svg viewBox="0 0 300 300" class="char-svg char-svg-wink">
+        <ellipse class="char-shadow" cx="150" cy="268" rx="70" ry="12"/>
+        <circle class="char-body" cx="150" cy="160" r="95"/>
+        <circle class="char-cheek" cx="103" cy="175" r="14"/>
+        <circle class="char-cheek" cx="197" cy="175" r="14"/>
+        <!-- winking eye (left, closed / curved) -->
+        <path class="char-eye-wink" d="M 114 150 Q 122 143 130 150" />
+        <!-- open eye (right) -->
+        <ellipse class="char-eye" cx="178" cy="150" rx="7" ry="10"/>
+        <path class="char-smile char-smile-big" d="M 118 183 Q 150 214 182 183" />
+        <!-- left arm relaxed -->
+        <path class="char-arm-left" d="M 78 175 Q 40 190 35 225" />
+        <!-- right arm pointing forward at viewer -->
+        <g class="char-arm-point-group">
+          <path class="char-arm-point" d="M 222 170 Q 260 168 285 160" />
+          <circle class="char-point-tip" cx="285" cy="160" r="6"/>
+        </g>
+      </svg>
+    </div>
+    <h2 class="thanks-title">See you, <span class="name-highlight">Mathilde</span></h2>
+    <p class="thanks-sub">Can't wait.</p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
